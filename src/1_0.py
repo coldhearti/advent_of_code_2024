@@ -3,7 +3,7 @@ from typing import Tuple
 
 from utils import get_file_lines
 
-lines = get_file_lines(Path("ref/1.input"))
+LINES = get_file_lines(Path("ref/1.input"))
 
 
 def parse_numbers(line: str) -> Tuple[int, int]:
@@ -12,10 +12,15 @@ def parse_numbers(line: str) -> Tuple[int, int]:
     return (int(num1), int(num2))
 
 
-left: Tuple[int, ...]
-right: Tuple[int, ...]
-left, right = zip(*map(parse_numbers, lines))
-left_sorted = sorted(left)
-right_sorted = sorted(right)
-diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
-print(sum(diffs))
+def main() -> int:
+    left: Tuple[int, ...]
+    right: Tuple[int, ...]
+    left, right = zip(*map(parse_numbers, LINES))
+    left_sorted = sorted(left)
+    right_sorted = sorted(right)
+    diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
+    return sum(diffs)
+
+
+if __name__ == "__main__":
+    print(main())

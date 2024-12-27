@@ -1,0 +1,9 @@
+[project]
+name = "advent_of_code_2024"
+authors = [{ name = "Eemil Kiviahde", email = "eemil@coldheart.dev" }]
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Tuple
+from typing import List, Tuple
 
 from utils import get_file_lines
 
@@ -13,13 +13,18 @@ def parse_numbers(line: str) -> Tuple[int, int]:
 
 
 def main() -> int:
+    left_sorted, right_sorted = sorted_number_lists()
+    diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
+    return sum(diffs)
+
+
+def sorted_number_lists() -> Tuple[List[int], List[int]]:
     left: Tuple[int, ...]
     right: Tuple[int, ...]
     left, right = zip(*map(parse_numbers, LINES))
     left_sorted = sorted(left)
     right_sorted = sorted(right)
-    diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
-    return sum(diffs)
+    return left_sorted, right_sorted
 
 
 if __name__ == "__main__":

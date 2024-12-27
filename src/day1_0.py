@@ -12,12 +12,6 @@ def parse_numbers(line: str) -> Tuple[int, int]:
     return (int(num1), int(num2))
 
 
-def main() -> int:
-    left_sorted, right_sorted = sorted_number_lists()
-    diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
-    return sum(diffs)
-
-
 def sorted_number_lists() -> Tuple[List[int], List[int]]:
     left: Tuple[int, ...]
     right: Tuple[int, ...]
@@ -25,6 +19,12 @@ def sorted_number_lists() -> Tuple[List[int], List[int]]:
     left_sorted = sorted(left)
     right_sorted = sorted(right)
     return left_sorted, right_sorted
+
+
+def main() -> int:
+    left_sorted, right_sorted = sorted_number_lists()
+    diffs = [abs(l_val - r_val) for (l_val, r_val) in zip(left_sorted, right_sorted)]
+    return sum(diffs)
 
 
 if __name__ == "__main__":

@@ -5,15 +5,29 @@ from utils import REF_FOLDER_PATH, get_file_lines
 LINES = get_file_lines(REF_FOLDER_PATH.joinpath("2.input"))
 
 
+def base_safety_predicate(
+    curr_level: int,
+    next_level: int,
+    direction: bool,
+) -> bool:
+    diff = abs(curr_level - next_level)
+    step_predicate = 1 <= diff <= 3
+    direction_predicate = (curr_level < next_level) == direction
+    if not (direction_predicate and step_predicate):
+        return False
+    return True
+
+
 def safety_predicate(levels: List[int]) -> bool:
     direction = levels[0] < levels[1]
     for i in range(len(levels) - 1):
         curr_level = levels[i]
         next_level = levels[i + 1]
-        diff = abs(curr_level - next_level)
-        step_predicate = 1 <= diff <= 3
-        direction_predicate = (curr_level < next_level) == direction
-        if not (direction_predicate and step_predicate):
+        if not base_safety_predicate(
+            curr_level,
+            next_level,
+            direction,
+        ):
             return False
     return True
 

@@ -1,9 +1,8 @@
-from pathlib import Path
 from typing import List, Tuple
 
-from utils import get_file_lines
+from utils import REF_FOLDER_PATH, get_file_lines
 
-LINES = get_file_lines(Path("ref/1.input"))
+LINES = get_file_lines(REF_FOLDER_PATH.joinpath("1.input"))
 
 
 def parse_numbers(line: str) -> Tuple[int, int]:

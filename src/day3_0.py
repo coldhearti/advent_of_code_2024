@@ -4,7 +4,7 @@ from typing import List, Tuple
 from utils import REF_FOLDER_PATH, get_file_lines
 
 LINES = get_file_lines(REF_FOLDER_PATH.joinpath("3.input"))
-
+COMMAND_STRING = "".join(LINES)
 MUL_PATTERN = re.compile(r"mul\(([0-9]*),([0-9]*)\)")
 
 
@@ -25,7 +25,7 @@ def mul_sum(command_string: str):
 
 
 def main():
-    return mul_sum("".join(LINES))
+    return mul_sum(COMMAND_STRING)
 
 
 if __name__ == "__main__":

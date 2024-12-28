@@ -9,7 +9,6 @@ MUL_PATTERN = re.compile(r"mul\(([0-9]*),([0-9]*)\)")
 
 
 def mul_values(command_string: str) -> List[Tuple[int, int]]:
-    print(MUL_PATTERN.findall(command_string))
     return list(map(lambda val: (int(val[0]), int(val[1])), MUL_PATTERN.findall(command_string)))
 
 
